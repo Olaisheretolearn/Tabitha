@@ -38,6 +38,11 @@ class BookmarkController (
          }
      }
 
+     @DeleteMapping(path = ["/{id}"])
+     fun deleteById(@PathVariable id :String){
+          repository.deleteById(ObjectId(id))
+     }
+
      private fun Bookmark.toResponse():BookmarkResponse{
           return BookmarkResponse(
                id = id.toHexString(),

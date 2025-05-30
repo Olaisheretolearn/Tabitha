@@ -5,5 +5,6 @@ import org.bson.types.ObjectId
 import org.springframework.data.mongodb.repository.MongoRepository
 
 interface BookmarkRepository : MongoRepository<Bookmark, ObjectId> {
-
+    fun findByOwnerId(ownerId:ObjectId): List<Bookmark>
 }
+

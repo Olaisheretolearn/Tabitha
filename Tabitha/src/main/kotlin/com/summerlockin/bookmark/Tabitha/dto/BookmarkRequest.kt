@@ -1,3 +1,13 @@
 package com.summerlockin.bookmark.Tabitha.dto
 
-data class BookmarkRequest()
+import org.bson.types.ObjectId
+
+data class BookmarkRequest(
+    val id:String?,
+    val url: String,
+    val category: String,
+    val previewImageUrl: String? = null,
+    val ownerId: String? = null
+
+
+)

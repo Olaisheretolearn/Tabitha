@@ -1,5 +1,6 @@
 package com.summerlockin.bookmark.Tabitha.security
 
+import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
 import org.springframework.beans.factory.annotation.Value
@@ -34,6 +35,22 @@ class JwtService (
 
     fun generateRefreshToken(userId:String) :String {
         return generateToken(userId, "refresh", refreshTokenValidityMs)
+    }
+
+    fun validateAccessToken(token:String):Boolean {
+
+    }
+
+    private fun parseAllClaims(token:String): Claims?{
+        return try{
+            Jwts.parser()
+                .verifyWith(secretKey)
+                .build()
+                .parseSignedClaims(token)
+                .payload()
+        } catch(e:Exception){
+
+        }
     }
 
 }
